@@ -1,0 +1,87 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a href="#" class="navbar-item">
+      <p class="has-text-white has-text-weight-bold">COGNICOR</p>
+      <!-- <img src="https://pbs.twimg.com/profile_images/922231841989337088/apRqNMoD_400x400.jpg" width="112" height="28"> -->
+    </a>
+    <a
+      role="button"
+      class="navbar-burger burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbar"
+      (click)="toggleMenu()"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbar" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <button class="button is-rounded is-primary is-outlined">
+            Profile
+          </button>
+          <button
+            class="button is-rounded is-danger is-outlined"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="home-wrapper">
+  <!-- Sidebar -->
+  <aside
+    class="sidebar"
+    [ngClass]="{
+      active: isMenuOpen,
+      deactivated: !isMenuOpen && !initialLoading
+    }"
+  >
+    <nav class="menu">
+      <div class="menu-category">
+        <header class="category-header">Home</header>
+        <ul class="menu-list">
+          <li>
+            <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <ul class="menu-list">
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="container is-fluid">
+    <!-- Chat -->
+    <section class="chat-container">
+      <div *ngIf="chatToggle" class="chat-window">
+        <app-chat [chat]="chat.reverse()"></app-chat>
+      </div>
+      <button
+        (click)="toggleChat()"
+        class="button is-small is-rounded"
+        [ngClass]="{ 'is-info' : !chatToggle }"
+      >
+        <span *ngIf="!chatToggle">Chat</span>
+        <span *ngIf="chatToggle">Close</span>
+      </button>
+    </section>
+
+    <!-- Router Pages -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

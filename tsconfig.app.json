@@ -2,14 +2,21 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@app":["./src/app/*"]
+    },
+    "incremental": true
   },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"
   ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

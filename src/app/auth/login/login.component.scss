@@ -1,0 +1,82 @@
+$brandColor: hsl(166, 67%, 51%);
+$background: rgb(247, 247, 247);
+$textDark: hsla(0, 0%, 0%, 0.66);
+$textLight: hsla(0, 0%, 0%, 0.33);
+
+.field:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+.register {
+	border-radius: 10px;
+}
+.right {
+	padding: 2rem;
+	background: white;
+	max-width: 400px;
+	margin: 0 auto;
+	@media screen and (max-width:480px) {
+		padding: 2rem 1rem;
+	}
+}
+.right .title {
+	font-weight: 800;
+}
+
+.right .description {
+	color: $textLight;
+	font-size: 1rem;
+}
+
+.right small {
+	color: $textLight;
+}
+
+input {
+	font-size: 1rem;
+}
+
+input:focus {
+	border-color: $brandColor !important;
+	box-shadow: 0 0 0 1px $brandColor !important;
+}
+
+// Google Signing Button
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669F2;
+
+.google-btn {
+  background-color: $google-blue;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+  display: flex;
+  .google-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: $white;
+    position: relative;
+    padding: 10px;
+  }
+  .google-icon {
+    display: block;
+  }
+  .btn-text {
+    flex-grow: 1;
+    align-self: center;
+    text-align: center;
+    color: $white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: "Roboto";
+  }
+  &:hover {
+    box-shadow: 0 0 6px $google-blue;
+  }
+  &:active {
+    background: $button-active-blue;
+  }
+}
+
+// @import url(https://fonts.googleapis.com/css?family=Roboto:500);

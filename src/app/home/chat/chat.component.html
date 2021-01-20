@@ -1,0 +1,27 @@
+<nav class="panel">
+  <p class="panel-heading">Chat</p>
+  <div class="panel-block messages">
+    <ul class="list">
+      <li
+        *ngFor="let item of chat"
+        [ngClass]="{ 'user' : item.author === 'user' }"
+      >
+        <p class="message">
+          {{ item.message }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-block">
+    <form [formGroup]="chatForm">
+      <div class="field has-addons">
+        <div class="control">
+          <input formControlName="message" class="input" type="text" />
+        </div>
+        <div class="control">
+          <button class="button is-primary" (click)="send()">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>

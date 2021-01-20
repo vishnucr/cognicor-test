@@ -1,0 +1,115 @@
+@import "../../assets/variables";
+
+// HOME COMPONENT
+.navbar {
+  z-index: 999;
+  box-shadow: 0px 0px 21px $darker-color;
+  .navbar-brand {
+    width: $sidebar-width;
+    background-color: $highlight-color;
+    margin-right: calc(#{$padding} - 0.75rem);
+    .navbar-burger {
+      display: none;
+      @media only screen and (max-width: 960px) {
+        display: block;
+      }
+    }
+    @media only screen and (max-width: 960px) {
+      margin: 0;
+      width: 100vw;
+    }
+    .navbar-item {
+      padding-left: $padding;
+    }
+  }
+}
+.home-wrapper {
+  @media screen and (max-width: 768px) {
+    .container.is-fluid{
+        padding: 0;
+    }
+  }
+  display: flex;
+  margin-top: $header-height;
+  .sidebar {
+    width: $sidebar-width;
+    padding: 5rem 1.5rem;
+    background-color: $background-white;
+    @media only screen and (max-width: 768px) {
+      position: fixed;
+      top: 0;
+      left: -$sidebar-width;
+      height: 100vh;
+      box-shadow: $box-shadow-1;
+      z-index: 99;
+    }
+    &.active {
+      left: 0;
+      animation: slideInLeft-custom 0.3s forwards;
+    }
+    &.deactivated {
+      @media only screen and (max-width: 768px) {
+        animation: slideOutLeft-custom 0.5s forwards;
+      }
+    }
+    .menu-category {
+      margin-bottom: 2rem;
+      .category-header {
+        font-size: $size-1;
+        font-weight: bold;
+      }
+      .menu-list {
+        font-size: $size-1;
+        li {
+          a {
+            padding-left: 0;
+            &.active{
+              color: $highlight-color;
+            }
+          }
+        }
+        // font-weight: bold;
+      }
+    }
+  }
+  .main {
+    flex-grow: 1;
+  }
+
+  .chat-container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    .chat-window{
+      min-height: 480px;
+      min-width: 320px;
+      position: absolute;
+      bottom: 60px;
+      right: 20px;
+    }
+  }
+
+}
+
+@keyframes slideOutLeft-custom {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -$sidebar-width;
+  }
+}
+@keyframes slideInLeft-custom {
+  from {
+    left: -$sidebar-width;
+  }
+
+  to {
+    left: 0;
+  }
+}
